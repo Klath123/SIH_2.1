@@ -1,6 +1,7 @@
 # 💡 Tech Intelligence Platform
 
 Demo link:- https://sangam-ai2.vercel.app/
+
 This project is a comprehensive platform designed to provide users with actionable insights into emerging technologies, market trends, and competitive landscapes. It leverages a combination of data aggregation, AI-powered analysis, and user-friendly visualizations to deliver a holistic view of the technology landscape. The platform aims to empower businesses and researchers to make informed decisions, identify opportunities, and stay ahead of the curve in today's rapidly evolving technological environment.
 
 🚀 **Key Features**
