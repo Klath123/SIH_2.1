@@ -2,43 +2,35 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import DashboardPage from './pages/TestDashboard';
-import Dashboard from './pages/Dashboard';
-import TechnologyIntelligence from './pages/TechnologyIntelligence';
+import TechIntelegence from './pages/TechIntelegence';
 import AnalyticsForecasting from './pages/AnalyticsForecasting';
 import PatentAnalysis from './pages/PatentAnalysis';
 import ResearchPublications from './pages/ResearchPublications';
-import Settings from './pages/Settings';
 import Home from './pages/Home';
-import TechIntelligenceDashboard from './pages/TestDashboardBase';
-import TestAPI from './pages/TestAPI';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [theme, setTheme] = useState('light'); // Default theme is light
 
   return (
     <Router>
-      <div className="flex h-screen bg-gray-50">
+      <div className={`flex h-screen ${theme === 'light' ? 'bg-gray-50' : 'bg-slate-900'}`}>
         {/* Sidebar */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} theme={theme} />
         
         {/* Main content */}
         <div className="flex-1 flex flex-col overflow-hidden">
-          <Header setSidebarOpen={setSidebarOpen} />
+          <Header setSidebarOpen={setSidebarOpen} theme={theme} setTheme={setTheme} />
           
           {/* Page content */}
-          <main className="flex-1 overflow-y-auto ">
+          <main className="flex-1 overflow-y-auto">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/technology-intelligence" element={<TechnologyIntelligence />} />
-              <Route path="/analytics" element={<AnalyticsForecasting />} />
-              <Route path="/patents" element={<PatentAnalysis />} />
-              <Route path="/dashboardold" element={<Dashboard />} />
-              <Route path="/publications" element={<ResearchPublications />} />
-              <Route path="/dashboardBase" element={<TechIntelligenceDashboard />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/test-api" element={<TestAPI />} />
+              <Route path="/" element={<Home theme={theme} />} />
+              <Route path="/technology-intelligence" element={<TechIntelegence theme={theme} />} />
+              <Route path="/analytics" element={<AnalyticsForecasting theme={theme} />} />
+              <Route path="/patents" element={<PatentAnalysis theme={theme} />} />
+              <Route path="/publications" element={<ResearchPublications theme={theme} />} />
+              <Route path="*" element={<h1 className={`p-4 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>page not found 404</h1>} />
             </Routes>
           </main>
         </div>
